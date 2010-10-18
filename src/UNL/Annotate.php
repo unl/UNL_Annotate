@@ -17,6 +17,8 @@ class UNL_Annotate
 
     public static $db_pass = 'SETINCONFIG';
 
+    public static $db_name = 'unl_annotate';
+
     public $actionable = array();
 
     function __construct($options = array())
@@ -57,6 +59,22 @@ class UNL_Annotate
     function handlePost()
     {
         $annotation = UNL_Annotate_Annotation::edit($_POST);
+    }
+
+    /**
+     * Connect to the database and return it
+     * 
+     * @return mysqli
+     */
+    public static function getDB()
+    {
+        $db = new mysqli('127.0.0.1', self::$db_user, self::$db_pass, self::$db_name);
+        if (mysqli_connect_error()) {
+            throw new Exception('Database connection error (' . mysqli_connect_errno() . ') '
+                    . mysqli_connect_error());
+        }
+        $db->set_charset('utf8');
+        return $db;
     }
 
     /**
