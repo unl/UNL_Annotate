@@ -24,7 +24,7 @@ class UNL_Annotate
     function __construct($options = array())
     {
         $this->options = $options + $this->options;
-        $this->authenticate(true);
+        $this->authenticate();
 
         try {
             if (!empty($_POST)) {
@@ -113,25 +113,23 @@ class UNL_Annotate
      * 
      * @return void
      */
-    static function authenticate($logoutonly = false)
+    static function authenticate()
     {
         if (isset($_GET['logout'])) {
             self::$auth = UNL_Auth::factory('SimpleCAS');
             self::$auth->logout();
-        }
-        if ($logoutonly) {
-            return true;
         }
 
         self::$auth = UNL_Auth::factory('SimpleCAS');
         self::$auth->login();
 
         if (!self::$auth->isLoggedIn()) {
-            throw new Exception('You must log in to view this resource!');
+            throw new Exception('You must be logged in to use this resource');
             exit();
         }
+
         self::$user = UNL_Annotate_User::getByUID(self::$auth->getUser());
-        self::$user->last_login = date('Y-m-d H:i:s');
+        //Update lastlogin timestamp
         self::$user->update();
     }
 }
