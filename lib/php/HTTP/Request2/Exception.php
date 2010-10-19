@@ -42,11 +42,6 @@
  */
 
 /**
- * Base class for exceptions in PEAR
- */
-require_once 'PEAR/Exception.php';
-
-/**
  * Exception class for HTTP_Request2 package
  *
  * Such a class is required by the Exception RFC:
