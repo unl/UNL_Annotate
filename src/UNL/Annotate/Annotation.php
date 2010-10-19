@@ -36,4 +36,9 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
     {
         return 'annotations';
     }
+
+    function keys()
+    {
+        return array('user_id', 'sitekey', 'fieldname');
+    }
 }
