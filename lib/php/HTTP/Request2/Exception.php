@@ -51,7 +51,7 @@
  * @package    HTTP_Request2
  * @version    Release: 0.5.2
  */
-class HTTP_Request2_Exception extends PEAR_Exception
+class HTTP_Request2_Exception extends Exception
 {
 }
 ?>
