@@ -16,7 +16,7 @@ var annotate = function() {
 		},
 
 		setupUserNotice : function() { //indicate to user areas are annotatable
-			
+			$('#wdn_wrapper').before('<div id="wdn_annotate_notice">This page has areas in which you can save personal annotations specific to particular content. <a href="#">Show these areas</a></div>');
 		},
 		
 		showAnnotableRegions : function() { //add markup/icon to areas which can be annotatable
