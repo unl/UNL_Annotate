@@ -4,7 +4,31 @@ if (false == headers_sent()) {
     header("content-type: application/x-javascript");
 }
 ?>
-WDN.loadCSS('<?php echo UNL_Annotate::$url; ?>/css/annotate.css');
+var annotate = function() { 
+	return {
+		initialize : function() { //check to see if we have class="wdn_annotate" on the page
+			if ($('.wdn_annotate')) {
+				WDN.loadCSS('<?php echo UNL_Annotate::$url; ?>/css/annotate.css');
+				annotate.setupUserNotice();
+			} else {
+				return false;
+			}
+		},
+
+		setupUserNotice : function() { //indicate to user areas are annotatable
+			
+		},
+		
+		showAnnotableRegions : function() { //add markup/icon to areas which can be annotatable
+			
+		},
+		
+		buildAnnotatbles : function() { //when a user clicks on one of the icons, bring up a qTip with the textarea/contenteditable for the note
+			
+		}
+	};
+}($ = WDN.jQuery);
+
 WDN.jQuery(document).ready(function($){
 	$('.wdn_annotate').attr("contenteditable",true);
 	
@@ -35,6 +59,8 @@ WDN.jQuery(document).ready(function($){
 		
 	});
 
+	//initial call to load the rest of the JS
+	annotate.initialize();
 
 
 });
