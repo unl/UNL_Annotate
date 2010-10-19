@@ -2,18 +2,33 @@ WDN.loadCSS('http://ucommrasmussen.unl.edu/workspace/unl_annotate/www/css/annota
 WDN.jQuery(document).ready(function($){
 	$('.wdn_annotate').attr("contenteditable",true);
 	
-	$('.wdn_annotate').change(function(){
-		var newValue = $(this).html();
+	$('.wdn_annotate').live('focus', function() {
+		before = $(this).html();
+	}).live('keyup paste', function() { 
+		if (before != $(this).html()) {
+			$(this).trigger('change');
+		}
+	});
+	
+	$('.wdn_annotate').live('change', function() {
+		var id = $(this).attr('id').split('_');
+		var sitekey = id[0];
+		var fieldname = id[1];
+		var note = $(this).html();
+		
+		var dataString = 'note='+$.trim(note)+'&sitekey='+sitekey+'&fieldname='+fieldname;
 
 		WDN.post(
 			'http://ucommrasmussen.unl.edu/workspace/unl_annotate/www',
-			'note='+newValue,
+			dataString,
 			function(data){
-				
+				alert(data);
 			},
 			''
 		);
-		return false
+		
 	});
+
+
 
 });
