@@ -1,4 +1,10 @@
-WDN.loadCSS('http://ucommrasmussen.unl.edu/workspace/unl_annotate/www/css/annotate.css');
+<?php 
+require_once dirname(dirname(dirname(__FILE__))).'/config.inc.php';
+if (false == headers_sent()) {
+    header("content-type: application/x-javascript");
+}
+?>
+WDN.loadCSS('<?php echo UNL_Annotate::$url; ?>/css/annotate.css');
 WDN.jQuery(document).ready(function($){
 	$('.wdn_annotate').attr("contenteditable",true);
 	
@@ -19,7 +25,7 @@ WDN.jQuery(document).ready(function($){
 		var dataString = 'note='+$.trim(note)+'&sitekey='+sitekey+'&fieldname='+fieldname;
 
 		WDN.post(
-			'http://ucommrasmussen.unl.edu/workspace/unl_annotate/www/',
+			'<?php echo UNL_Annotate::$url; ?>',
 			dataString,
 			function(data){
 				

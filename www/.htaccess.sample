@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteBase /workspace/unl_annotate/www/
+RewriteRule ^scripts/annotate.js scripts/annotate.js.php
