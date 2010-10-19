@@ -23,7 +23,7 @@ var annotate = function() {
 			
 		},
 		
-		buildAnnotatbles : function() { //when a user clicks on one of the icons, bring up a qTip with the textarea/contenteditable for the note
+		buildAnnotables : function() { //when a user clicks on one of the icons, bring up a qTip with the textarea/contenteditable for the note
 			
 		}
 	};
