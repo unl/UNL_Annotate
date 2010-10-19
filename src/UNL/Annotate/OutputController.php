@@ -10,6 +10,7 @@ class UNL_Annotate_OutputController extends Savvy
     function __construct($options = array())
     {
         parent::__construct();
+        Savvy_ClassToTemplateMapper::$classname_replacement = 'UNL_';
     }
     
     static public function setCacheInterface(UNL_Annotate_CacheInterface $cache)
