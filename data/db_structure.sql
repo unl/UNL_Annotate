@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 18, 2010 at 04:33 PM
+-- Generation Time: Oct 19, 2010 at 04:08 PM
 -- Server version: 5.1.48
 -- PHP Version: 5.3.2
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `annotations` (
 DROP TABLE IF EXISTS `sites`;
 CREATE TABLE IF NOT EXISTS `sites` (
   `sitekey` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `domain` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`sitekey`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastlogin` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `users`
