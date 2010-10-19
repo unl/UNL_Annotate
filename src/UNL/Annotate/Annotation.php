@@ -16,7 +16,7 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
         
     }
 
-    public static function save()
+    function save()
     {
         if (!UNL_Annotate_Site::validRequest($this->sitekey)) {
             throw new Exception('Unregistered site key');
@@ -28,6 +28,12 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
             throw new Exception('Error saving annotation', 500);
         }
         
-        return true;
+        echo 'success';
+        exit();
+    }
+
+    public static function getTable()
+    {
+        return 'annotations';
     }
 }

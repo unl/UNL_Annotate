@@ -19,10 +19,10 @@ WDN.jQuery(document).ready(function($){
 		var dataString = 'note='+$.trim(note)+'&sitekey='+sitekey+'&fieldname='+fieldname;
 
 		WDN.post(
-			'http://ucommrasmussen.unl.edu/workspace/unl_annotate/www',
+			'http://ucommrasmussen.unl.edu/workspace/unl_annotate/www/',
 			dataString,
 			function(data){
-				alert(data);
+				
 			},
 			''
 		);

@@ -160,6 +160,17 @@ class UNL_Annotate_Record
         return false;
     }
     
+    public static function getRecordByValue($table, $value, $field = 'id')
+    {
+        $mysqli = self::getDB();
+        $sql = "SELECT * FROM $table WHERE $field = '".$mysqli->escape_string($value)."' LIMIT 1;";
+        if ($result = $mysqli->query($sql)) {
+            return $result->fetch_assoc();
+        }
+        
+        return false;
+    }
+    
     function delete()
     {
         $mysqli = self::getDB();

@@ -58,9 +58,9 @@ class UNL_Annotate
      */
     function handlePost()
     {
-        $annotation = UNL_Annotate_Annotation();
+        $annotation = new UNL_Annotate_Annotation();
         
-        $_POST['user_id'] = UNL_Annotate_User::getByUID($_POST['uid'])->id;
+        $_POST['user_id'] = UNL_Annotate::getUser()->id;
         
         self::setObjectFromArray($annotation, $_POST);
         
@@ -123,12 +123,12 @@ class UNL_Annotate
      */
     static function authenticate()
     {
+        self::$auth = UNL_Auth::factory('SimpleCAS');
+
         if (isset($_GET['logout'])) {
-            self::$auth = UNL_Auth::factory('SimpleCAS');
             self::$auth->logout();
         }
 
-        self::$auth = UNL_Auth::factory('SimpleCAS');
         self::$auth->login();
 
         if (!self::$auth->isLoggedIn()) {
