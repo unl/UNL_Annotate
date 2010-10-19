@@ -35,13 +35,13 @@ class UNL_Annotate_User extends UNL_Annotate_Record
         $object->insert();
         return $object;
     }
-    
-    function keys()
+
+    public static function getID()
     {
-        return array('uid');
+        return $this->id;
     }
 
-    function getTable()
+    public static function getTable()
     {
         return 'users';
     }

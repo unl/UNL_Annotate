@@ -58,7 +58,15 @@ class UNL_Annotate
      */
     function handlePost()
     {
-        $annotation = UNL_Annotate_Annotation::edit($_POST);
+        $annotation = UNL_Annotate_Annotation();
+        
+        $_POST['user_id'] = UNL_Annotate_User::getByUID($_POST['uid'])->id;
+        
+        self::setObjectFromArray($annotation, $_POST);
+        
+        if (!$annotation->save()) {
+            throw new Exception('Could not save the annotation');
+        }
     }
 
     /**
@@ -131,5 +139,23 @@ class UNL_Annotate
         self::$user = UNL_Annotate_User::getByUID(self::$auth->getUser());
         //Update lastlogin timestamp
         self::$user->update();
+    }
+
+    /**
+     * Get the currently logged in user
+     * 
+     * @return UNL_Annotate_User
+     */
+    public static function getUser($forceAuth = false)
+    {
+        if (self::$user) {
+            return self::$user;
+        }
+
+        if ($forceAuth) {
+            self::authenticate();
+        }
+
+        return self::$user;
     }
 }

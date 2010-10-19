@@ -5,10 +5,10 @@ class UNL_Annotate_Site extends UNL_Annotate_Record
 
     public $domain;
     
-    public static function validRequest($key, $referrer)
+    public static function validRequest($key)
     {
         $site = self::getByKey($key);
-        if ($site->domain == $referrer) {
+        if ($site) {
             return true;
         }
         return false;
