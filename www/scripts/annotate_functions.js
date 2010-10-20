@@ -7,7 +7,7 @@ var annotate = function() {
 		},
 
 		setupUserNotice : function() { //indicate to user areas are annotatable
-			$('#wdn_wrapper').before('<div id="wdn_annotate_notice">This page has areas in which you can save personal annotations specific to particular content. <a href="#">Show these areas</a></div>');
+			$('#wdn_wrapper').before('<div id="wdn_annotate_notice"><img src="'+annotate.path+'css/images/note.png" />This page has areas in which you can save personal annotations specific to particular content. <a href="#">Show these areas</a></div>');
 			$('#wdn_annotate_notice').slideDown('slow');
 		},
 		
