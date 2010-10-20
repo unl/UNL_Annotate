@@ -37,7 +37,7 @@ WDN.jQuery(document).ready(function($){
 
 	//initial call to load the rest of the JS
 	if ($('.wdn_annotate')) {
-		WDN.loadCSS(annotate.path+'/css/annotate.css');
+		WDN.loadCSS('<?php echo UNL_Annotate::$url; ?>/css/annotate.css');
 		WDN.loadJS('<?php echo UNL_Annotate::$url; ?>scripts/annotate_functions.js', function(){
 			annotate.path = '<?php echo UNL_Annotate::$url; ?>';
 			annotate.initialize();
