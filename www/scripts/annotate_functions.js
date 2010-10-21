@@ -13,13 +13,17 @@ var annotate = function() {
 		
 		showAnnotatableRegions : function() {
 			$('.wdn_annotate').each(function(){
+				var id = $(this).attr('id').split('_');
+				var sitekey = id[0];
+				var fieldname = id[1];
+				
 				$(this).addClass('on');
-				$(this).append(annotate.createNote());
+				$(this).append(annotate.createNote(sitekey, fieldname));
 			});
 		},
 		
-		createNote : function(id) { //build the note
-			noteURL = annotate.path+'?='+id;
+		createNote : function(sitekey, fieldname) { //build the note
+			noteURL = annotate.path+'?sitekey='+sitekey+'&fieldname='+fieldname;
 			htmlStructure = '<iframe src="'+noteURL+'" width="100%" scrolling="no" class="annotate_note"></iframe>';
 			return htmlStructure;
 		},
