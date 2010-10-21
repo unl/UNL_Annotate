@@ -35,7 +35,7 @@ var annotate = function() {
 		            	adjust : {
 		            		screen : true,
 		            		y : 0,
-		            		x : -5
+		            		x : 0
 		            	}
 		            },
 		            show: {
@@ -49,10 +49,11 @@ var annotate = function() {
 		            	tip: { 
 		            		corner: 'bottomLeft' ,
 		            		size: { x: 25, y: 15 },
-		            		color: '#c8c8c8'
+		            		color: '#ffeeb2'
 		            	},
-		            	"padding" : "9px",
-		            	"width":"98px",
+		            	border : {
+		            		width : 0
+		            	},
 		            	classes : {
 		            		tooltip : 'annotation'
 		            	}
