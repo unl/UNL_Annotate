@@ -12,6 +12,10 @@
 }
 .wdn_annotate {
 }
+.wdn_annotate.on {
+	outline:1px solid #ffdc73;
+	margin:5px 0;	
+}
 .annotatable {
 	background:url("images/note.png") no-repeat scroll 0 0 transparent;
 	height:12px;
@@ -23,41 +27,10 @@
 
 /*
 
-The qTip bubble
+The iFrame outline
 
 */
-.qtip.annotation .qtip-contentWrapper {
-	font:77%/140% "Lucida Grande",Verdana,Arial;
-	color:#494949;
-}
-.qtip.annotation .qtip-content {
-	margin: -5px -9px; /*Overwrite the qTip padding defaults*/
-}
-.qtip.annotation .qtip-content h5 {
-	background:#935842;
-	background-image:-webkit-gradient(
-	    linear,
-	    left top,
-	    left bottom,
-	    color-stop(0, rgb(252,159,122)),
-	    color-stop(0.1, rgb(197,123,94)),
-	    color-stop(0.92, rgb(120,82,49))
-	);
-	background-image:-moz-linear-gradient(
-	    center top,
-	    rgb(252,159,122) 0%,
-	    rgb(197,123,94) 10%,
-	    rgb(120,82,49) 92%
-	);
-	padding:3px 10px;
-	color:#fff;
-	text-shadow: 1px 1px 1px #6a3a28;
-	font-size:1.2em;
-	-moz-border-radius:3px 3px 0 0;
-}
-
-.qtip.annotation .qtip-content p {
-	background:#ffeeb2;
-	padding: 3px 10px;
-	font-size:.9em;
+iframe.annotate_note {
+	border:1px solid #000;
+	
 }
