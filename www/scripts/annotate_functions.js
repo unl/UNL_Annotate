@@ -7,7 +7,7 @@ var annotate = function() {
 		},
 
 		setupUserNotice : function() { //indicate to user areas are annotatable
-			$('#wdn_wrapper').before('<div id="wdn_annotate_notice"><img src="'+annotate.path+'css/images/note.png" />This page has areas in which you can save personal annotations specific to particular content. <a href="#" onclick="annotate.showAnnotatableRegions();">Show these areas</a></div>');
+			$('#wdn_wrapper').before('<div id="wdn_annotate_notice"><img src="'+annotate.path+'css/images/note.png" />This page has areas in which you can save personal annotations specific to particular content. <a href="#" onclick="annotate.showAnnotatableRegions(); return false;">Show these areas</a></div>');
 			$('#wdn_annotate_notice').slideDown('slow');
 		},
 		
@@ -20,7 +20,7 @@ var annotate = function() {
 		
 		createNote : function(id) { //build the note
 			noteURL = annotate.path+'?='+id;
-			htmlStructure = '<iframe src="'+noteURL+'"></iframe>';
+			htmlStructure = '<iframe src="'+noteURL+'" width="100%" scrolling="no" class="annotate_note"></iframe>';
 			return htmlStructure;
 		},
 		
