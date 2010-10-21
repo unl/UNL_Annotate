@@ -13,6 +13,7 @@ var annotate = function() {
 		
 		showAnnotatableRegions : function() {
 			$('.wdn_annotate').each(function(){
+				$(this).addClass('on');
 				$(this).append(annotate.createNote());
 			});
 		},
