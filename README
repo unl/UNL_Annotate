@@ -1,0 +1,27 @@
+README for UNL_Annotate
+
+
+*********************** DB SETUP ***********************
+
+Set up the database for the annotations:
+    CREATE USER 'annotate'@'localhost' IDENTIFIED BY 'annotate';
+    CREATE DATABASE IF NOT EXISTS `unl\_annotate` ;
+    GRANT ALL PRIVILEGES ON `unl\_annotate` . * TO 'annotate'@'localhost';
+
+Then import the database structure in the db_structure.sql file.
+    mysql -u annotate -p unl_annotate < ./data/db_structure.sql
+
+*********************** CONFIG FILES ***********************
+
+Copy the configuration file:
+    cp config.sample.php config.inc.php
+
+Customize the database connection info, and site URL, if necessary:
+    UNL_Annotate::$url = 'http://localhost/workspace/UNL_Annotate/www/';
+    UNL_Annotate::$db_pass = 'annotate';
+
+Copy the .htaccess.sample file:
+    cp www/.htaccess.sample www/.htaccess
+
+Customize the rewrite base, if necessary:
+    RewriteBase /workspace/UNL_Annotate/www/
