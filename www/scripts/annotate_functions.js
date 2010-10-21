@@ -11,66 +11,16 @@ var annotate = function() {
 			$('#wdn_annotate_notice').slideDown('slow');
 		},
 		
-		showAnnotatableRegions : function() { //add markup/icon to areas which can be annotatable
-			$('.wdn_annotate').each(function(index, Element){
-				$(this).append('<a href="#" class="annotatable"></a>');
-				if (index == ($('.wdn_annotate').length - 1)) {
-					annotate.buildAnnotatables();
-				}
-			});
-		},
-		
-		buildAnnotatables : function() { //when a user clicks on one of the icons, bring up a qTip with the textarea/contenteditable for the note
-			$('.annotatable').each(function(){
-				$(this).qtip({
-		    		content:{
-		    			text: annotate.createNote($(this).parent('.wdn_annotate').attr('id'))
-		    		},
-		            position : {
-		            	corner : {
-		            		target : 'topRight',
-		            		tooltip : 'bottomLeft'
-		            	},
-		            	container: $('body'),
-		            	adjust : {
-		            		screen : true,
-		            		y : 0,
-		            		x : 0
-		            	}
-		            },
-		            show: {
-		            	delay : 150
-		            },
-		            hide: {
-		            	fixed : true,
-		            	delay : 150
-		            },
-		            style: { 
-		            	tip: { 
-		            		corner: 'bottomLeft' ,
-		            		size: { x: 25, y: 15 },
-		            		color: '#ffeeb2'
-		            	},
-		            	border : {
-		            		width : 0
-		            	},
-		            	classes : {
-		            		tooltip : 'annotation'
-		            	}
-		            }
-		    	});
+		showAnnotatableRegions : function() {
+			$('.wdn_annotate').each(function(){
+				$(this).append(annotate.createNote());
 			});
 		},
 		
 		createNote : function(id) { //build the note
-			htmlStructure = '<h5 class="note_heading">Your Note</h5><p contenteditable="true" id=note_'+id+'>%NOTE%</p>';
-			if(annotate.availableNote(id)) {
-				note_content = annotate.availableNote(id);
-			} else {
-				note_content = 'Click this text to start typing your note.';
-			}
-			note = htmlStructure.replace('%NOTE%', note_content);
-			return note;
+			noteURL = annotate.path+'?='+id;
+			htmlStructure = '<iframe src="'+noteURL+'"></iframe>';
+			return htmlStructure;
 		},
 		
 		availableNote : function(id) { //query to see if a note exists
