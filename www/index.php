@@ -6,7 +6,7 @@ if (file_exists(dirname(__FILE__) . '/../config.inc.php')) {
     require_once dirname(__FILE__) . '/../config.sample.php';
 }
 
-$annotation = new UNL_Annotate();
+$annotation = new UNL_Annotate($_GET);
 
 $outputcontroller = new UNL_Annotate_OutputController();
 $outputcontroller->setTemplatePath(dirname(__FILE__).'/templates/json');

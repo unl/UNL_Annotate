@@ -13,7 +13,14 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
 
     function __construct($options = array())
     {
-        
+        if(isset($options['sitekey']) && isset($options['fieldname'])) {
+            $this->fieldname = $options['fieldname'];
+            $this->sitekey = $options['sitekey'];
+            $this->user_id = UNL_Annotate::getUser()->id;
+            if (!$this->note = self::getNote($this->fieldname,$this->sitekey,$this->user_id)) {
+                throw new Exception('Note doesn not exist', 404);
+            }
+        }
     }
 
     function save()
@@ -30,6 +37,20 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
         
         echo 'success';
         exit();
+    }
+
+    function getNote($fieldname, $sitekey, $user_id)
+    {
+        $mysqli = UNL_Annotate::getDB();
+        $sql = 'SELECT note FROM annotations WHERE fieldname = "'.$mysqli->escape_string($fieldname).'" ';
+        $sql .= 'AND sitekey = "'.$mysqli->escape_string($sitekey).'" ';
+        $sql .= 'AND user_id = "'.intval($user_id).'" LIMIT 1;';
+        if ($result = $mysqli->query($sql)) {
+            if ($row = $result->fetch_array(MYSQLI_NUM)) {
+                return $row[0];
+            }
+        }
+        return false;
     }
 
     public static function getTable()

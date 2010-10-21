@@ -1,2 +1,1 @@
-<?php
-echo $savvy->render($context->actionable);
+{<?php echo $savvy->render($context->actionable); ?>}

@@ -4,7 +4,7 @@ class UNL_Annotate
     public $options = array('format' => 'json',
                             'view'   => 'annotation');
 
-    public $view_annotation = array('annotation'       => 'UNL_Annotate_Annotation',
+    public $view_map = array('annotation'       => 'UNL_Annotate_Annotation',
                              );
 
     public static $url;
