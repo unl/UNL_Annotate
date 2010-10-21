@@ -10,12 +10,13 @@
 #wdn_annotate_notice img {
 	margin:0 10px -5px 0;
 }
-.wdn_annotate .annotatable {
+.wdn_annotate {
+}
+.annotatable {
 	background:url("images/note.png") no-repeat scroll 0 0 transparent;
-	float:right;
-	height:20px;
-	position:relative;
-	right:-3px;
-	width:28px;
+	height:12px;
+	position:absolute;
+	width:16px;
 	cursor:pointer;
+	margin: 3px 0 0 5px;
 }

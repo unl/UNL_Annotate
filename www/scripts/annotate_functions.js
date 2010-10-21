@@ -22,7 +22,7 @@ var annotate = function() {
 		
 		buildAnnotatables : function() { //when a user clicks on one of the icons, bring up a qTip with the textarea/contenteditable for the note
 			//try {
-				$('.wdn_annotate .annotatable').each(function(){
+				$('.annotatable').each(function(){
 					$(this).qtip({
 			    		content:{
 			    			text: 'blah blah'
