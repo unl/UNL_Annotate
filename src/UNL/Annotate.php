@@ -44,11 +44,11 @@ class UNL_Annotate
 
     function run()
     {
-         if (isset($this->view_map[$this->options['view']])) {
-             $this->actionable[] = new $this->view_map[$this->options['view']]($this->options);
-         } else {
-             throw new Exception('Un-registered view');
+         if (!isset($this->view_map[$this->options['view']])) {
+             throw new Exception('Un-registered view', 404);
          }
+
+         $this->actionable[] = new $this->view_map[$this->options['view']]($this->options);
     }
 
     /**
