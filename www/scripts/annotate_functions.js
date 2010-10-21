@@ -21,50 +21,59 @@ var annotate = function() {
 		},
 		
 		buildAnnotatables : function() { //when a user clicks on one of the icons, bring up a qTip with the textarea/contenteditable for the note
-			//try {
-				$('.annotatable').each(function(){
-					$(this).qtip({
-			    		content:{
-			    			text: 'blah blah'
-			    		},
-			            position : {
-			            	corner : {
-			            		target : 'topMiddle',
-			            		tooltip : 'bottomMiddle'
-			            	},
-			            	container: $('body'),
-			            	adjust : {
-			            		screen : true,
-			            		y : 3,
-			            		x : 5
-			            	}
-			            },
-			            show: {
-			            	delay : 150
-			            },
-			            hide: {
-			            	fixed : true,
-			            	delay : 150
-			            },
-			            style: { 
-			            	tip: { 
-			            		corner: 'bottomMiddle' ,
-			            		size: { x: 25, y: 15 },
-			            		color: '#c8c8c8'
-			            	},
-			            	"padding" : "9px",
-			            	"width":"98px",
-			            	classes : {
-			            		tooltip : 'courseInfo'
-			            	}
-			            }
-			    	});
-				});
-	    	//} catch(e) {}
+			$('.annotatable').each(function(){
+				$(this).qtip({
+		    		content:{
+		    			text: annotate.createNote($(this).parent('.wdn_annotate').attr('id'))
+		    		},
+		            position : {
+		            	corner : {
+		            		target : 'topRight',
+		            		tooltip : 'bottomLeft'
+		            	},
+		            	container: $('body'),
+		            	adjust : {
+		            		screen : true,
+		            		y : 0,
+		            		x : -5
+		            	}
+		            },
+		            show: {
+		            	delay : 150
+		            },
+		            hide: {
+		            	fixed : true,
+		            	delay : 150
+		            },
+		            style: { 
+		            	tip: { 
+		            		corner: 'bottomLeft' ,
+		            		size: { x: 25, y: 15 },
+		            		color: '#c8c8c8'
+		            	},
+		            	"padding" : "9px",
+		            	"width":"98px",
+		            	classes : {
+		            		tooltip : 'annotation'
+		            	}
+		            }
+		    	});
+			});
 		},
 		
-		createNote : function() { //either get the note from DB or just setup a new one
-			
+		createNote : function(id) { //build the note
+			htmlStructure = '<h5 class="note_heading">Your Note</h5><p contenteditable="true" id=note_'+id+'>%NOTE%</p>';
+			if(annotate.availableNote(id)) {
+				note_content = annotate.availableNote(id);
+			} else {
+				note_content = 'Click this text to start typing your note.';
+			}
+			note = htmlStructure.replace('%NOTE%', note_content);
+			return note;
+		},
+		
+		availableNote : function(id) { //query to see if a note exists
+			return false;
 		}
 	};
 }($ = WDN.jQuery);
