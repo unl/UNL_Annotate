@@ -3,8 +3,6 @@
 	border-bottom:1px solid #A29330;
 	padding:5px 10px 8px 5px;
 	text-align:center;
-	z-index:1;
-	position:relative;
 	font:12px "Lucida Grande",Verdana,Arial;
 	color:#615503;
 	display:none;
@@ -12,7 +10,12 @@
 #wdn_annotate_notice img {
 	margin:0 10px -5px 0;
 }
-.wdn_annotate {
-	min-height:20px;
-	border:1px solid black;
+.wdn_annotate .annotable {
+	background:url("images/note.png") no-repeat scroll 0 0 transparent;
+	float:right;
+	height:20px;
+	position:relative;
+	right:-3px;
+	width:28px;
+	cursor:pointer;
 }
