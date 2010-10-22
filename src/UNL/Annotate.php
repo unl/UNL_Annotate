@@ -24,18 +24,20 @@ class UNL_Annotate
     function __construct($options = array())
     {
         $this->options = $options + $this->options;
-        $this->authenticate();
 
         try {
+            $this->authenticate();
+
             if (!empty($_POST)) {
                 $this->handlePost();
             }
             $this->run();
         } catch(Exception $e) {
-            if (false == headers_sent()
-                && $code = $e->getCode()) {
-                header('HTTP/1.1 '.$code.' '.$e->getMessage());
-                header('Status: '.$code.' '.$e->getMessage());
+            if (false == headers_sent() && $code = $e->getCode()) {
+                if (strlen((int)$code) == 3) {
+                    header('HTTP/1.1 '.$code.' '.$e->getMessage());
+                    header('Status: '.$code.' '.$e->getMessage());
+                }
             }
 
             $this->actionable[] = $e;
@@ -129,11 +131,14 @@ class UNL_Annotate
             self::$auth->logout();
         }
 
-        self::$auth->login();
+        if (isset($_COOKIE['unl_sso'])) {
+            self::$auth->login();
+        }
 
         if (!self::$auth->isLoggedIn()) {
-            throw new Exception('You must be logged in to use this resource');
-            exit();
+            return false;
+            //throw new Exception('You must be logged in to use this resource',1000);
+            //exit();
         }
 
         self::$user = UNL_Annotate_User::getByUID(self::$auth->getUser());
