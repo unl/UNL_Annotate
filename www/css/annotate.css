@@ -11,9 +11,11 @@
 	margin:0 10px -5px 0;
 }
 .wdn_annotate {
+	display:none;
 }
 .wdn_annotate.on {
-	outline:1px solid #ffdc73;
+	display:block;
+	outline:1px solid #A29330;
 	margin:5px 0;	
 }
 .annotatable {
@@ -24,13 +26,10 @@
 	cursor:pointer;
 	margin: 3px 0 0 5px;
 }
-
 /*
-
 The iFrame outline
-
 */
 iframe.annotate_note {
-	border:1px solid #000;
-	
+	height:100%;
+	width:100%;
 }
