@@ -1,7 +1,7 @@
 <?php
 class UNL_Annotate
 {
-    public $options = array('format' => 'json',
+    public $options = array('format' => 'html',
                             'view'   => 'annotation');
 
     public $view_map = array('annotation'       => 'UNL_Annotate_Annotation',
