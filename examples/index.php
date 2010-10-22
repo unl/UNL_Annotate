@@ -15,7 +15,6 @@
     
     $Id: php.fixed.dwt.php 536 2009-07-23 15:47:30Z bbieber2 $
 -->
-<link rel="stylesheet" type="text/css" media="screen" href="css/physics.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="/wdn/templates_3.0/css/all.css" />
 <link rel="stylesheet" type="text/css" media="print" href="/wdn/templates_3.0/css/print.css" />
 <script type="text/javascript" src="/wdn/templates_3.0/scripts/all.js"></script>
@@ -26,6 +25,12 @@
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" -->
 <!-- Place optional header elements here -->
 <script type="text/javascript" src="http://localhost/workspace/unl_annotate/www/scripts/annotate.js"></script>
+<style type="text/css">
+div.wdn_annotate {
+    height:100px;
+    width:400px;
+}
+</style>
 <!-- TemplateEndEditable -->
 </head>
 <body class="document">
