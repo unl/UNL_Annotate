@@ -16,9 +16,12 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
         if(isset($options['sitekey']) && isset($options['fieldname'])) {
             $this->fieldname = $options['fieldname'];
             $this->sitekey = $options['sitekey'];
-            $this->user_id = UNL_Annotate::getUser()->id;
+            if ($user = UNL_Annotate::getUser()) {
+                $this->user_id = $user->id;
+            }
             if (!$this->note = self::getNote($this->fieldname,$this->sitekey,$this->user_id)) {
-                throw new Exception('Note doesn not exist', 404);
+                //Don't do 404, display empty note to edit instead?
+                //throw new Exception('Note doesn not exist', 404);
             }
         }
     }
