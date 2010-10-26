@@ -8,19 +8,19 @@ WDN.jQuery(document).ready(function($){
     $('.editRegion textarea').live('focus', function() {
         before = $(this).html();
     }).live('keyup paste', function() {
-        $('.editHeader span').removeClass('saved').addClass('save').html('Save Now');
+        $('.editHeader span.saved').removeClass('saved').addClass('save').html('Save Now');
         
         if (before != $(this).html()) {
             $(this).trigger('change');
         }
     });
     
-    $('.editHeader span').click(function(){
+    $('.editHeader span.save').click(function(){
         $('.editRegion textarea').trigger('change');
     });
 
     $('.editRegion textarea').live('change', function() {
-        $('.editHeader span').removeClass('save').addClass('saved').html('Saving');
+        $('.editHeader span.save').removeClass('save').addClass('saved').html('Saving');
 
         var dataString = $(this).parent().serialize();
 
@@ -29,7 +29,7 @@ WDN.jQuery(document).ready(function($){
             dataString,
             function(data){
                 if (data == 'success') {
-                    $('.editHeader span').html('Saved');
+                    $('.editHeader span.save').html('Saved');
                 }
             },
             ''

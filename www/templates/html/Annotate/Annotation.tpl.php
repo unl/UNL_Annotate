@@ -1,4 +1,5 @@
 <div class="editHeader">
+<a href="<?php echo UNL_Annotate::$url; ?>?view=help" title="What is this?" target="_blank" class="whatisthis">?</a>
 <span class="saved">Saved</span>
 Your <?php echo $savvy->render($context->sitekey); ?> annotation for <?php echo $savvy->render($context->fieldname); ?>
 </div>

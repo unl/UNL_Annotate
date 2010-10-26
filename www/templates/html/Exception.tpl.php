@@ -22,3 +22,4 @@ font-size:1.5em;
 <a href="?login" id="wdnLoginButton">Log in with your <span>My.UNL Account</span></a>
 
 <?php endif; ?>
+*/
