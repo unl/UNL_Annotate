@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo UNL_Annotate::getURL(); ?>css/annotate_iframe.css" />
 <script type="text/javascript">
 WDN.jQuery(document).ready(function($){
-	//Adjust for scrollbars, overflow, padding uglyness
+	//Adjust for scrollbars, overflow, padding ugliness
 	var height = $('#editRegion').height();
 	var width = $('#editRegion').width();
 	$('#editRegion').height(height-20);
