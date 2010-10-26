@@ -7,12 +7,11 @@
 <script type="text/javascript">
 WDN.jQuery(document).ready(function($){
 	//Adjust for scrollbars, overflow, padding ugliness
-	var height = $('#editRegion').height();
-	var width = $('#editRegion').width();
-	$('#editRegion').height(height-20);
-	$('#editRegion').width(width-5);
+	var height = $('.editRegion textarea').height();
+	var width = $('.editRegion textarea').width();
+	$('.editRegion textarea').height(height-23);
+	$('.editRegion textarea').width(width-5);
 });
-
 </script>
 </head>
 <body>
