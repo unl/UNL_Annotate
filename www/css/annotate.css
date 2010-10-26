@@ -15,21 +15,10 @@
 }
 .wdn_annotate.on {
 	display:block;
-	outline:1px solid #A29330;
-	margin:5px 0;	
+	margin:0 0 5px 0;
 }
-.annotatable {
-	background:url("images/note.png") no-repeat scroll 0 0 transparent;
-	height:12px;
-	position:absolute;
-	width:16px;
-	cursor:pointer;
-	margin: 3px 0 0 5px;
-}
-/*
-The iFrame outline
-*/
-iframe.annotate_note {
+iframe.wdn_annotate_note {
 	height:100%;
 	width:100%;
+	outline:1px solid #A29330;
 }

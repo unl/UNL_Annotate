@@ -13,7 +13,7 @@ body {
 	line-height: 1;
 }
 
-#editHeader {
+.editHeader {
 	position:fixed;
 	top:0;
 	width:100%;
@@ -23,7 +23,11 @@ body {
 	font-size:12px;
 	font-family:Arial,sans-serif;
 }
-#editRegion {
+.editRegion {
+	height:100%;
+	width:100%;
+}
+.editRegion textarea {
 	width:100%;
 	height:100%;
 	background:#FDF2AB;

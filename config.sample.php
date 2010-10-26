@@ -17,3 +17,4 @@ UNL_Annotate::$url = 'http://localhost/workspace/unl_annotate/www/';
 //Database username/password
 UNL_Annotate::$db_user = 'annotate';
 UNL_Annotate::$db_pass = 'annotate';
+UNL_Annotate::$db_name = 'unl_annotate';
