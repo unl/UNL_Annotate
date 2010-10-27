@@ -5,6 +5,7 @@ class UNL_Annotate
                             'view'   => 'annotation');
 
     public $view_map = array('annotation'       => 'UNL_Annotate_Annotation',
+                             'popuplogin'       => 'UNL_Annotate_PopUpLogin',
                              );
 
     public static $url;
@@ -62,7 +63,12 @@ class UNL_Annotate
     {
         $annotation = new UNL_Annotate_Annotation();
         
-        $_POST['user_id'] = UNL_Annotate::getUser()->id;
+        if (UNL_Annotate::getUser()) {
+            $_POST['user_id'] = UNL_Annotate::getUser()->id;
+        } else {
+            echo 'loginfail';
+            exit();
+        }
         
         self::setObjectFromArray($annotation, $_POST);
         
@@ -131,7 +137,7 @@ class UNL_Annotate
             self::$auth->logout();
         }
 
-        if (isset($_COOKIE['unl_sso'])) {
+        if (isset($_COOKIE['unl_sso']) || isset($_GET['login'])) {
             self::$auth->login();
         }
 
@@ -162,5 +168,14 @@ class UNL_Annotate
         }
 
         return self::$user;
+    }
+    
+
+    static function redirect($url, $exit = true)
+    {
+        header('Location: '.$url);
+        if (false !== $exit) {
+            exit($exit);
+        }
     }
 }

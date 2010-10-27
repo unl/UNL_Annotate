@@ -9,12 +9,12 @@ WDN.jQuery(document).ready(function($){
         before = $(this).html();
     }).live('keyup paste', function() {
         $('.editHeader span.saved').removeClass('saved').addClass('save').html('Save Now');
-        
+
         if (before != $(this).html()) {
             $(this).trigger('change');
         }
     });
-    
+
     $('.editHeader span.save').click(function(){
         $('.editRegion textarea').trigger('change');
     });
@@ -29,10 +29,30 @@ WDN.jQuery(document).ready(function($){
             dataString,
             function(data){
                 if (data == 'success') {
-                    $('.editHeader span.save').html('Saved');
+                    $('.editHeader span.saved').html('Saved');
+                } else if (data == 'loginfail') {
+                    $('.editHeader span.saved').removeClass('saved').addClass('savelogin').html('Login to Save');
+                    $('.editHeader span.savelogin').click(function(){
+                        window.open('<?php echo UNL_Annotate::$url; ?>?view=popuplogin','UNL_Login','height=700,width=1100,scrollbars=yes');
+                        return false;
+                    });
                 }
             },
             ''
         );
     });
+
+    $('#notLoggedIn').click(function(){
+        window.open('<?php echo UNL_Annotate::$url; ?>?view=popuplogin','UNL_Login','height=700,width=1100,scrollbars=yes');
+        return false;
+    });
+
+    $('#notLoggedIn').hover(
+        function(){
+            $(this).css('text-decoration','underline');
+        },
+        function(){
+            $(this).css('text-decoration','none');
+        }
+    );
 });
