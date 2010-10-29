@@ -55,7 +55,7 @@ var annotate = function() {
 		
 		createNote : function(sitekey, fieldname) { //build the note
 			noteURL = annotate.path+'?sitekey='+sitekey+'&fieldname='+fieldname;
-			htmlStructure = '<iframe src="'+noteURL+'" width="100%" scrolling="no" class="wdn_annotate_note"></iframe>';
+			htmlStructure = '<iframe src="'+noteURL+'" width="100%" height="100%" scrolling="no" class="wdn_annotate_note"></iframe>';
 			return htmlStructure;
 		},
 		
