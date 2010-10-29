@@ -10,7 +10,7 @@ WDN.jQuery(document).ready(function($){
 	if ($('.wdn_annotate')) {
 		WDN.loadCSS('<?php echo UNL_Annotate::$url; ?>css/annotate.css');
 		WDN.loadJS('<?php echo UNL_Annotate::$url; ?>scripts/annotate_functions.js', function(){
-			annotate.path = '<?php echo UNL_Annotate::$url; ?>';
+			annotate.path = '<?php echo UNL_Annotate::$url; ?>?view=annotation';
 			annotate.initialize();
 		});
 	}

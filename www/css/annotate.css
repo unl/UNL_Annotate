@@ -14,12 +14,21 @@
 	display:none;
 }
 .wdn_annotate.on {
-	background:url('images/note.png') no-repeat;
-	display:block;
+	display:inline-block;
 	margin:0 0 5px 0;
-	width:30px;
-	height:30px;
+}
+.wdn_annotate.on a {
+	background-color:#EDEDED;
+	background-image:url('images/note16.png');
+	background-repeat:no-repeat;
+	background-position:2px 4px;
+	min-height:16px;
+	padding:2px 2px 2px 24px;
+	border:1px solid #D4D4D4;
 	cursor:pointer;
+	border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
 }
 iframe.wdn_annotate_note {
 	height:100%;

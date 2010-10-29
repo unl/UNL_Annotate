@@ -25,12 +25,6 @@
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" -->
 <!-- Place optional header elements here -->
 <script type="text/javascript" src="http://localhost/workspace/unl_annotate/www/scripts/annotate.js"></script>
-<style type="text/css">
-div.wdn_annotate {
-    height:100px;
-    width:400px;
-}
-</style>
 <!-- TemplateEndEditable -->
 </head>
 <body class="document">
