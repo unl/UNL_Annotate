@@ -25,7 +25,7 @@ WDN.jQuery(document).ready(function($){
         var dataString = $(this).parent().serialize();
 
         WDN.post(
-            '<?php echo UNL_Annotate::$url; ?>',
+            '<?php echo UNL_Annotate::$url; ?>?view=annotation',
             dataString,
             function(data){
                 if (data == 'success') {
