@@ -14,8 +14,6 @@ body {
 }
 
 .editHeader {
-	position:fixed;
-	top:0;
 	width:100%;
 	min-height:18px;
 	background:#A29330;
@@ -57,8 +55,8 @@ body {
 	height:100%;
 	background:#FDF2AB;
 	padding:5px;
-	margin:18px 0 0 0;
-	border:0;
+	margin:0;
+	border:none;
 }
 #notLoggedIn {
     position:absolute;
