@@ -3,7 +3,8 @@ var annotate = function() {
 		path : false,
 		
 		initialize : function() { //this should only be called if we have a .wdn_annonate
-			annotate.setupUserNotice();
+			//annotate.setupUserNotice();
+			annotate.showAnnotatableRegions()
 		},
 
 		setupUserNotice : function() { //indicate to user areas are annotatable
@@ -18,7 +19,37 @@ var annotate = function() {
 				var fieldname = id[1];
 				
 				$(this).addClass('on');
-				$(this).append(annotate.createNote(sitekey, fieldname));
+				//$(this).append(annotate.createNote(sitekey, fieldname));
+				$(this).qtip(
+					{
+						content: {
+							text: annotate.createNote(sitekey, fieldname)
+						},
+						position: {
+							corner: {
+								target: 'bottomMiddle',
+								tooltip: 'topMiddle'
+							},
+							adjust: {
+								screen: true
+							}
+						},
+						show: { 
+							when: 'click', 
+							solo: true
+						},
+						hide: 'unfocus',
+						style: {
+							tip: true,
+							border: {
+								width: 0,
+								radius: 4
+							},
+							name: 'light',
+							width: 500
+						}
+					}
+				);
 			});
 		},
 		

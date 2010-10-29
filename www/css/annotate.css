@@ -14,8 +14,12 @@
 	display:none;
 }
 .wdn_annotate.on {
+	background:url('images/note.png') no-repeat;
 	display:block;
 	margin:0 0 5px 0;
+	width:30px;
+	height:30px;
+	cursor:pointer;
 }
 iframe.wdn_annotate_note {
 	height:100%;
