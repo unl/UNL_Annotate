@@ -27,8 +27,8 @@ var annotate = function() {
 						},
 						position: {
 							corner: {
-								target: 'bottomMiddle',
-								tooltip: 'topMiddle'
+								target: 'bottomRight',
+								tooltip: 'topLeft'
 							},
 							adjust: {
 								screen: true
@@ -40,12 +40,12 @@ var annotate = function() {
 						},
 						hide: 'unfocus',
 						style: {
-							tip: true,
+							tip: false,
 							border: {
 								width: 0,
-								radius: 4
+								radius: 0
 							},
-							name: 'light',
+							'background-color':'transparent',
 							width: 500
 						}
 					}
