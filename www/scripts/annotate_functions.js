@@ -46,7 +46,8 @@ var annotate = function() {
 								radius: 0
 							},
 							'background-color':'transparent',
-							width: 500
+							width: 420,
+							height: 160
 						}
 					}
 				);
