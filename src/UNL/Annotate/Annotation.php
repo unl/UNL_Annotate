@@ -26,18 +26,25 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
         }
     }
 
-    function save()
+    function save($type)
     {
         if (!UNL_Annotate_Site::validRequest($this->sitekey)) {
             throw new Exception('Unregistered site key');
         }
-        
-        $result = parent::save();
-        
+
+        switch ($type) {
+            case 'insert' :
+                $result = parent::insert();
+            case 'update' :
+                $result = parent::update();
+            default :
+                $result = parent::save();
+        }
+
         if (!$result) {
             throw new Exception('Error saving annotation', 500);
         }
-        
+
         echo 'success';
         exit();
     }

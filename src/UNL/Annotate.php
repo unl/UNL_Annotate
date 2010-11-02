@@ -61,19 +61,33 @@ class UNL_Annotate
      */
     function handlePost()
     {
-        $annotation = new UNL_Annotate_Annotation();
-        
         if (UNL_Annotate::getUser()) {
             $_POST['user_id'] = UNL_Annotate::getUser()->id;
         } else {
             echo 'loginfail';
             exit();
         }
-        
+
+        $new_annotation = false;
+
+        if (!empty($_POST['sitekey']) && !empty($_POST['fieldname'])) {
+            if (!UNL_Annotate_Annotation::getNote($_POST['fieldname'],$_POST['sitekey'],$_POST['user_id'])) {
+                $new_annotation = true;
+            }
+        }
+
+        $annotation = new UNL_Annotate_Annotation;
+
         self::setObjectFromArray($annotation, $_POST);
-        
-        if (!$annotation->save()) {
-            throw new Exception('Could not save the annotation');
+
+        if ($new_annotation) {
+            if (!$annotation->save('insert')) {
+                throw new Exception('Could not insert the annotation', 500);
+            }
+        } else {
+            if (!$annotation->save('update')) {
+                throw new Exception('Could not update the annotation', 500);
+            }
         }
     }
 

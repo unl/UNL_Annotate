@@ -4,7 +4,7 @@ var annotate = function() {
 		
 		initialize : function() { //this should only be called if we have a .wdn_annonate
 			//annotate.setupUserNotice();
-			annotate.enableAnnotatableRegions()
+			annotate.enableAnnotatableRegions();
 		},
 
 		setupUserNotice : function() { //indicate to user areas are annotatable
