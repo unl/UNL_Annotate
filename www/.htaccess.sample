@@ -1,4 +1,2 @@
 RewriteEngine On
 RewriteBase /workspace/unl_annotate/www/
-RewriteRule ^scripts/annotate.js scripts/annotate.js.php
-RewriteRule ^scripts/annotate_iframe.js scripts/annotate_iframe.js.php

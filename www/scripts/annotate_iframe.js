@@ -1,10 +1,4 @@
-<?php 
-require_once dirname(dirname(dirname(__FILE__))).'/config.inc.php';
-if (false == headers_sent()) {
-    header("content-type: application/x-javascript");
-}
-?>
-WDN.jQuery(document).ready(function($){
+$(document).ready(function(){
     $('.editRegion textarea').live('focus', function() {
         before = $(this).html();
     }).live('keyup paste', function() {
@@ -24,8 +18,8 @@ WDN.jQuery(document).ready(function($){
 
         var dataString = $(this).parent().serialize();
 
-        WDN.post(
-            '<?php echo UNL_Annotate::$url; ?>?view=annotation',
+        $.post(
+            ANNOTATE_URL + '?view=annotation',
             dataString,
             function(data){
                 if (data == 'success') {
@@ -33,17 +27,18 @@ WDN.jQuery(document).ready(function($){
                 } else if (data == 'loginfail') {
                     $('.editHeader span.saved').removeClass('saved').addClass('savelogin').html('Login to Save');
                     $('.editHeader span.savelogin').click(function(){
-                        window.open('<?php echo UNL_Annotate::$url; ?>?view=popuplogin','UNL_Login','height=700,width=1100,scrollbars=yes');
+                        window.open(ANNOTATE_URL + '?view=popuplogin','UNL_Login','height=700,width=1100,scrollbars=yes');
                         return false;
                     });
+                } else {
+                	$('.editHeader span.saved').html('Error Occurred').removeClass('saved').addClass('save');
                 }
-            },
-            ''
+            }
         );
     });
 
     $('#notLoggedIn').click(function(){
-        window.open('<?php echo UNL_Annotate::$url; ?>?view=popuplogin','UNL_Login','height=700,width=1100,scrollbars=yes');
+        window.open(ANNOTATE_URL + '?view=popuplogin','UNL_Login','height=700,width=1100,scrollbars=yes');
         return false;
     });
 

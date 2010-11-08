@@ -14,22 +14,25 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
     function __construct($options = array())
     {
         if(isset($options['sitekey']) && isset($options['fieldname'])) {
+            if (!UNL_Annotate_Site::validRequest($options['sitekey'])) {
+                throw new Exception('Unregistered site key', 400);
+            }
             $this->fieldname = $options['fieldname'];
             $this->sitekey = $options['sitekey'];
-            if ($user = UNL_Annotate::getUser()) {
-                $this->user_id = $user->id;
-            }
-            if (!$this->note = self::getNote($this->fieldname,$this->sitekey,$this->user_id)) {
+
+            if (!$this->note = self::getNote($this->fieldname,$this->sitekey)) {
                 //Don't do 404, display empty note to edit instead?
                 //throw new Exception('Note doesn not exist', 404);
             }
+        } else {
+            throw new Exception('Missing API Keys', 400);
         }
     }
 
     function save($type)
     {
         if (!UNL_Annotate_Site::validRequest($this->sitekey)) {
-            throw new Exception('Unregistered site key');
+            throw new Exception('Unregistered site key', 400);
         }
 
         switch ($type) {
@@ -49,8 +52,15 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
         exit();
     }
 
-    function getNote($fieldname, $sitekey, $user_id)
+    public static function getNote($fieldname, $sitekey, $user_id = null)
     {
+        if (null === $user_id) {
+            if ($user = UNL_Annotate::getUser()) {
+                $user_id = $user->id;
+            } else {
+                return false;
+            }
+        }
         $mysqli = UNL_Annotate::getDB();
         $sql = 'SELECT note FROM annotations WHERE fieldname = "'.$mysqli->escape_string($fieldname).'" ';
         $sql .= 'AND sitekey = "'.$mysqli->escape_string($sitekey).'" ';
