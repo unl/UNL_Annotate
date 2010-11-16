@@ -24,7 +24,18 @@
 <title>UNL | Directory</title>
 <!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" -->
 <!-- Place optional header elements here -->
-<script type="text/javascript" src="http://localhost/workspace/unl_annotate/www/scripts/annotate.js"></script>
+<script type="text/javascript">
+WDN.jQuery(document).ready(function($) {
+    if ($('.wdn_annotate')) {
+        var ANNOTATE_URL = 'http://ucommrasmussen.unl.edu/workspace/unl_annotate/www/';
+        WDN.loadCSS(ANNOTATE_URL+'css/annotate.css');
+        WDN.loadJS(ANNOTATE_URL+'scripts/annotate_functions.js', function(){
+            annotate.path = ANNOTATE_URL+'?view=annotation';
+            annotate.initialize();
+        });
+    }
+});
+</script>
 <!-- TemplateEndEditable -->
 </head>
 <body class="document">
