@@ -69,31 +69,32 @@ class UNL_Annotate
 
         $new_annotation = false;
 
-        if (!empty($_POST['sitekey']) && !empty($_POST['fieldname'])) {
-            if (!UNL_Annotate_Annotation::getNote($_POST['fieldname'],$_POST['sitekey'])) {
-                $new_annotation = true;
+        if (!isset($_POST['sitekey'], $_POST['fieldname'])) {
+            throw new Exception('Missing API Keys', 400);
+        }
+
+        if (!UNL_Annotate_Annotation::getNote($_POST['fieldname'], $_POST['sitekey'])) {
+            $new_annotation = true;
+        }
+
+        $annotation = new UNL_Annotate_Annotation(array(
+            'sitekey'   => $_POST['sitekey'],
+            'fieldname' => $_POST['fieldname']
+        ));
+
+        self::setObjectFromArray($annotation, $_POST);
+        $annotation->user_id = UNL_Annotate::getUser()->id;
+
+        if ($new_annotation) {
+            if (!$annotation->save('insert')) {
+                throw new Exception('Could not insert the annotation', 500);
             }
-            
-            $annotation = new UNL_Annotate_Annotation(array(
-                'sitekey' => $_POST['sitekey'],
-                'fieldname' => $_POST['fieldname']
-            ));
-    
-            self::setObjectFromArray($annotation, $_POST);
-            $annotation->user_id = UNL_Annotate::getUser()->id;
-    
-            if ($new_annotation) {
-                if (!$annotation->save('insert')) {
-                    throw new Exception('Could not insert the annotation', 500);
-                }
-            } else {
-                if (!$annotation->save('update')) {
-                    throw new Exception('Could not update the annotation', 500);
-                }
+        } else {
+            if (!$annotation->save('update')) {
+                throw new Exception('Could not update the annotation', 500);
             }
         }
         
-        throw new Exception('Missing API Keys', 400);
     }
 
     /**
@@ -107,8 +108,8 @@ class UNL_Annotate
         if (mysqli_connect_error()) {
             throw new Exception('Database connection error (' . mysqli_connect_errno() . ') '
                     . mysqli_connect_error());
-            }
-            $db->set_charset('utf8');
+        }
+        $db->set_charset('utf8');
         return $db;
     }
 
