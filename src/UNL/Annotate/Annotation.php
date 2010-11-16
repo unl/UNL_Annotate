@@ -13,19 +13,20 @@ class UNL_Annotate_Annotation extends UNL_Annotate_Record
 
     function __construct($options = array())
     {
-        if(isset($options['sitekey']) && isset($options['fieldname'])) {
-            if (!UNL_Annotate_Site::validRequest($options['sitekey'])) {
-                throw new Exception('Unregistered site key', 400);
-            }
-            $this->fieldname = $options['fieldname'];
-            $this->sitekey = $options['sitekey'];
-
-            if (!$this->note = self::getNote($this->fieldname,$this->sitekey)) {
-                //Don't do 404, display empty note to edit instead?
-                //throw new Exception('Note doesn not exist', 404);
-            }
-        } else {
+        if (!isset($options['sitekey'], $options['fieldname'])) {
             throw new Exception('Missing API Keys', 400);
+        }
+        
+        if (!UNL_Annotate_Site::validRequest($options['sitekey'])) {
+            throw new Exception('Unregistered site key', 400);
+        }
+
+        $this->fieldname = $options['fieldname'];
+        $this->sitekey   = $options['sitekey'];
+
+        if (!$this->note = self::getNote($this->fieldname, $this->sitekey)) {
+            //Don't do 404, display empty note to edit instead?
+            //throw new Exception('Note doesn not exist', 404);
         }
     }
 
